@@ -75,5 +75,35 @@ Pulse Sensor Features and Specifications</br>
 How Pulse Sensor Works?</br>
 The working of the Pulse/Heart beat sensor is very simple. The sensor has two sides, on one side the LED is placed along with an ambient light sensor and on the other side we have some circuitry. This circuitry is responsible for the amplification and noise cancellation work. The LED on the front side of the sensor is placed over a vein in our human body. This can either be your Finger tip or you ear tips, but it should be placed directly on top of a vein. Now the LED emits light which will fall on the vein directly. The veins will have blood flow inside them only when the heart is pumping, so if we monitor the flow of blood we can monitor the heart beats as well. If the flow of blood is detected then the ambient light sensor will pick up more light since they will be reflect ted by the blood, this minor change in received light is analysed over time to determine our heart beats.</br>
 
-**Circuit Diagram**
+**Circuit Diagram**</br>
+
+
+![](https://github.com/spearpx/Health_monitor/blob/spearpx-patch-2/pulse%20sensor%20image.jpg)
+
+Circuit diagram of pulse sensor connected to Raspberry Pi 3 along with MCP3008 ADC</br>
+
+
+![](https://github.com/spearpx/Health_monitor/blob/spearpx-patch-2/Temp%20sensor%20image.jpg)
+
+Circuit diagram of temperature sensor connected to Raspberry Pi 3 </br>
+
+
+**Working of the project**</br>
+• Raspberry pi3 is used as medium that interacts with both sensors and output device (App).</br>
+• The temperature sensor does not require ADC, however it requires resistor connected across Vcc and sensor output.</br>
+• The temperature sensor output is connected to one of the GPIO pins of Raspberry pi, for communication it uses only one wired interface.</br>
+• Pulse sensor communicates through ADC(MCP3008), the data pin is connected to channel 0 of MCP3008.</br>
+• The analog output from Pulse sensor is converted into digital through ADC and interfaced with Raspberry pi.</br>
+• ADC(MCP3008) uses SAR(Successive approximation) technique to get accurate pulse readings.</br>
+• Raspberry pi communicates with mobile application by using MQTT client.</br>
+• A MQTT broker connects Raspberry pi to the cloud and cloud to mobile.</br>
+• The sensor output is sent to cloud through a channel and the mobile app receives the data from subscribing the channel that contains the sensor output.</br>
+• To collect the data for ML code is written to include the data into a csv file created locally.</br>
+• The csv file is used for various applications of ML.</br>
+
+**Conclusion**
+
+This is a simple project that handles with the sensors, CPU and mobile application. It is user friendly and hence any person of any age can use it. With further developments in hardware structure this device can be carried out anywhere. And mobile app is also a prototype, when developed the UI and usability of the app can be improved.
+##
+**Note**: All the files of this project are not available in this repository due to technical failures at the author's side resulting in loss of android studio files, since the process of restoration of files is difficult, any user can  utilise the existing files and complete the work as a challange by refering to the "working of the project" and suggest the changes when and where required. For further querries contact  Aravind V A (aravindva@hotmail.com).
 
